@@ -164,8 +164,8 @@ unix:!macx {
     INCLUDEPATH += $${LIBUSB1_INCLUDE}
     LIBS        += $${LIBUSB1_LIBS}
     DEFINES     += GC_HAVE_LIBUSB GC_HAVE_LIBUSB1
-    SOURCES     += LibUsb.cpp EzUsb.c Fortius.cpp FortiusController.cpp
-    HEADERS     += LibUsb.h EzUsb.h Fortius.cpp FortiusController.h
+    SOURCES     += LibUsb.cpp EzUsb1.c Fortius.cpp FortiusController.cpp
+    HEADERS     += LibUsb.h EzUsb1.h Fortius.cpp FortiusController.h
 }
 
 # are we supporting video playback?

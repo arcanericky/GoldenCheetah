@@ -618,7 +618,11 @@ struct usb_dev_handle* LibUsb::OpenFortius()
                 if ((udev = usb_open(dev))) {
 
                     // LOAD THE FIRMWARE
+#ifdef GC_HAVE_LIBUSB1
                     ezusb_load_ram (udev, appsettings->value(NULL, FORTIUS_FIRMWARE, "").toString().toLatin1(), 0, 0, 0);
+#else
+                    ezusb_load_ram (udev, appsettings->value(NULL, FORTIUS_FIRMWARE, "").toString().toLatin1(), 0, 0);
+#endif
                 }
 
                 // Now close the connection, our work here is done

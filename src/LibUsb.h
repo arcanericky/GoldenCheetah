@@ -28,6 +28,10 @@
 
 #if defined GC_HAVE_LIBUSB1
 #include <libusb-1.0/libusb.h>
+// EZ-USB firmware loader for Fortius
+extern "C" {
+#include "EzUsb1.h"
+}
 #elif defined GC_HAVE_LIBUSB
 #include <usb.h> // for the constants etc
 #include <errno.h>
@@ -36,17 +40,16 @@ const int LIBUSB_ERROR_IO = -EIO;
 const int LIBUSB_ERROR_TIMEOUT = -ETIMEDOUT;
 const int LIBUSB_ERROR_PIPE = -EPIPE;
 const int LIBUSB_ERROR_NO_DEVICE = -ENODEV;
+// EZ-USB firmware loader for Fortius
+extern "C" {
+#include "EzUsb.h"
+}
 #else
 const int LIBUSB_ERROR_IO = -1;
 const int LIBUSB_ERROR_TIMEOUT = -1;
 const int LIBUSB_ERROR_PIPE = -1;
 const int LIBUSB_ERROR_NO_DEVICE = -1;
 #endif
-
-// EZ-USB firmware loader for Fortius
-extern "C" {
-#include "EzUsb.h"
-}
 
 #ifdef WIN32
 #include <QLibrary> // for dynamically loading libusb0.dll
